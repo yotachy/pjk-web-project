@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Works — 박종권</title>
+  <meta name="description" content="박종권 시인의 작품 목록과 본문" />
+  <link rel="stylesheet" href="../assets/css/site.css" />
+</head>
+
+<body class="light">
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="../index.html">PJK</a>
+      <nav class="nav">
+        <a href="../index.html">Home</a>
+        <a href="../profile.html">Profile</a>
+        <a href="./index.html" class="is-active">Works</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap page">
+    <section class="section" style="margin-bottom:34px;">
+      <h1 class="title">Works</h1>
+      <p class="subtitle">좌측에서 작품을 선택하면, 우측에 소개/본문(정식님이 입력)을 표시합니다.</p>
+    </section>
+
+    <hr class="rule" />
+
+    <section class="works-split" aria-label="Works Split View">
+      <aside class="works-nav" aria-label="Works list">
+        <div class="works-nav-head">
+          <div class="section-title" style="margin:0;">All Works</div>
+          <div class="works-count" id="worksCount"></div>
+        </div>
+
+        <div class="works-filter" role="tablist" aria-label="Filter">
+          <button class="filter-btn is-active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="book" type="button">시집</button>
+          <button class="filter-btn" data-filter="poem" type="button">시</button>
+          <button class="filter-btn" data-filter="note" type="button">메모</button>
+        </div>
+
+        <ul class="works-list" id="worksList"></ul>
+      </aside>
+
+      <article class="works-pane" aria-live="polite">
+        <div class="works-pane-inner">
+          <div class="works-meta" id="workMeta"></div>
+          <h2 class="works-title" id="workTitle">작품을 선택하세요</h2>
+
+          <div class="works-note" id="workNote"></div>
+
+          <pre class="poem works-text" id="workText">
+좌측 목록에서 작품을 선택하면 이 영역이 갱신됩니다.
+
+- 시집/작품 소개는 제가 넣어두었습니다.
+- 실제 시 전문은 정식님이 보유한 원문으로 교체해 주세요.
+          </pre>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span> Park Jonggwon</span>
+      <span class="muted">All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <script src="./works.js"></script>
+</body>
+</html>

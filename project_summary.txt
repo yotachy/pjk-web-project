@@ -1,0 +1,655 @@
+--- File: ./docs/profile.html ---
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile — 박종권</title>
+  <meta name="description" content="박종권 시인의 프로필과 약력" />
+  <link rel="stylesheet" href="./assets/css/site.css" />
+</head>
+<body class="light">
+
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="./index.html">PJK</a>
+      <nav class="nav">
+        <a href="./index.html">Home</a>
+        <a href="./profile.html" class="is-active">Profile</a>
+        <a href="./works/index.html">Works</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap page">
+    <h1 class="title">Profile</h1>
+    <p class="subtitle">
+      전라북도 김제 출생. 1999년 월간 『순수문학』 등단.
+    </p>
+
+    <hr class="rule" />
+
+    <section class="section">
+      <h2 class="section-title">Overview</h2>
+      <div class="body" style="max-width:62ch;">
+        <p>
+          박종권 시인은 월간 『순수문학』을 통해 등단한 이후, 꾸준히 시를 발표해 왔다.
+          최근에는 제3시집 『즐거운 수다』를 출간했다.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Basic</h2>
+      <div class="list">
+        <div class="row">
+          <div class="left">
+            <div class="primary">출생</div>
+            <div class="secondary">전라북도 김제</div>
+          </div>
+          <div class="right"></div>
+        </div>
+
+        <div class="row">
+          <div class="left">
+            <div class="primary">학력</div>
+            <div class="secondary">전주고등학교 · 익산 남성중학교 · 인하대학교 졸업</div>
+          </div>
+          <div class="right"></div>
+        </div>
+
+        <div class="row">
+          <div class="left">
+            <div class="primary">등단</div>
+            <div class="secondary">1999년 월간 『순수문학』</div>
+          </div>
+          <div class="right">1999</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Activities</h2>
+      <div class="list">
+        <div class="row">
+          <div class="left">
+            <div class="primary">문단 활동</div>
+            <div class="secondary">
+              한국문인협회 회원 · 한국문인협회 문인권익옹호위원 · 한국시인협회 및 기독교 문인협회 회원 ·
+              한국순수문학인협회 이사 · 한국순수시 낭송회 운영위원
+            </div>
+          </div>
+          <div class="right"></div>
+        </div>
+
+        <div class="row">
+          <div class="left">
+            <div class="primary">업(業)</div>
+            <div class="secondary">관세사(기사/소개 자료에 따라 경기도 평택에서 활동)</div>
+          </div>
+          <div class="right"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Contact</h2>
+      <div class="body" style="max-width:62ch;">
+        <p>연락처는 정식님이 실제로 운영하실 채널로 바꿔 넣으시면 됩니다.</p>
+        <p>
+          Email — <a class="inline-link" href="mailto:you@example.com">you@example.com</a><br/>
+          (선택) Instagram — <a class="inline-link" href="#" target="_blank" rel="noreferrer">@yourhandle</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span> Park Jonggwon</span>
+      <span class="muted">All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+--- File: ./docs/works/work-sample.html ---
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>작품 제목 01 — 시인 박종권</title>
+  <meta name="description" content="시인 박종권의 작품 ‘작품 제목 01’" />
+  <link rel="stylesheet" href="../assets/css/site.css" />
+</head>
+
+<body class="light">
+  <!-- Header (Works 기준 경로) -->
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="../index.html">박종권</a>
+      <nav class="nav">
+        <a href="../index.html">Home</a>
+        <a href="../profile.html">Profile</a>
+        <a href="./index.html" class="is-active">Works</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap page">
+
+    <!-- Work header -->
+    <section class="section">
+      <h1 class="title" style="margin-bottom:10px;">작품 제목 01</h1>
+
+      <p class="subtitle">
+        시집 · 2024
+        <span style="color: var(--muted);"> · </span>
+        <a class="inline-link" href="./index.html">작품 목록으로</a>
+      </p>
+
+      <hr class="rule" />
+    </section>
+
+    <!-- Work meta (짧게, 과하지 않게) -->
+    <section class="section">
+      <h2 class="section-title">Note</h2>
+      <div class="body" style="max-width: 62ch;">
+        <p>
+          이 작품에 대한 1–2문장 정도의 간단한 메모를 넣으시면 좋습니다.
+          (발표 지면, 계기, 주제 등) 길어지면 메모는 삭제하는 편이 더 고급스럽습니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- Poem / Text body (읽기 최적화) -->
+    <section class="section">
+      <h2 class="section-title">Text</h2>
+
+      <!-- 작품은 "단락"이 아니라 "행"일 수 있으므로 pre를 기본으로 둡니다 -->
+      <article class="work-text">
+<pre class="poem">
+여기에 작품 본문을 넣으세요.
+행 단위로 줄바꿈이 유지됩니다.
+
+너무 많은 장식을 넣지 마세요.
+여백이 작품을 살립니다.
+
+— 시인 박종권
+</pre>
+      </article>
+
+      <!-- 필요 시, 산문/에세이용 텍스트 버전(선택)
+      <article class="work-prose">
+        <p>산문형 글이라면 p 문단으로 구성하세요.</p>
+        <p>문단 간격과 행간이 읽기 경험을 결정합니다.</p>
+      </article>
+      -->
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span>박종권</span>
+      <span class="muted">All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+--- File: ./docs/works/works.js ---
+// 박종권 시인 작품 데이터
+// - 시집/발행 시점은 공개 기사/프로필에 근거한 범위로만 기재
+// - 시 전문은 저작권 이슈가 있어 “소개/요약” 형태로 구성
+const WORKS = [
+  {
+    id: "book-joyful-talk",
+    title: "즐거운 수다",
+    type: "book",
+    typeLabel: "시집",
+    year: "2025",
+    note: "제3시집. 삶과 신앙을 소재로 한 시편들을 담은 것으로 소개된다.",
+    text:
+`[시집 소개]
+『즐거운 수다』는 2025년 출간 소식과 함께 소개된 제3시집입니다.
+삶과 신앙을 소재로 시편을 엮었다는 점이 기사에서 강조됩니다.
+
+[정식님 입력 영역]
+- 시집 수록 작품/목차
+- 대표 시 전문(원문)
+- 시인의 말(원문)
+을 여기에 붙여 넣으시면 됩니다.`
+  },
+  {
+    id: "book-love-bundle",
+    title: "사랑 하나 달랑 지고 가네",
+    type: "book",
+    typeLabel: "시집",
+    year: "2020",
+    note: "제2시집으로 소개된다. 이후 약 5년 반 만에 제3시집이 출간되었다.",
+    text:
+`[시집 소개]
+『사랑 하나 달랑 지고 가네』는 2020년 제2시집으로 소개됩니다.
+
+[정식님 입력 영역]
+- 수록 작품/목차
+- 대표 시 전문(원문)
+을 여기에 붙여 넣으시면 됩니다.`
+  },
+  {
+    id: "note-debut-1999",
+    title: "등단",
+    type: "note",
+    typeLabel: "메모",
+    year: "1999",
+    note: "월간 『순수문학』을 통해 등단한 것으로 소개된다.",
+    text:
+`1999년 월간 『순수문학』을 통해 등단.
+이후 문단 활동을 이어오며, 시집 출간으로 작품 세계를 확장해 왔습니다.`
+  },
+  {
+    id: "poem-insomnia-mention",
+    title: "불면",
+    type: "poem",
+    typeLabel: "시",
+    year: "",
+    note: "해설에서 시 「불면」이 언급된 바 있다(공개 기사).",
+    text:
+`[작품 메모]
+공개 기사에서 시 「불면」이 언급됩니다.
+
+[정식님 입력 영역]
+- 시 전문(원문)을 여기에 붙여 넣으시면 됩니다.
+(저작권 문제로 자동으로 넣지 않았습니다.)`
+  }
+];
+
+const els = {
+  list: document.getElementById("worksList"),
+  count: document.getElementById("worksCount"),
+  meta: document.getElementById("workMeta"),
+  title: document.getElementById("workTitle"),
+  note: document.getElementById("workNote"),
+  text: document.getElementById("workText"),
+  filterBtns: Array.from(document.querySelectorAll(".filter-btn")),
+};
+
+let currentFilter = "all";
+let currentId = null;
+
+function setActiveFilter(filter) {
+  currentFilter = filter;
+  els.filterBtns.forEach(btn => {
+    btn.classList.toggle("is-active", btn.dataset.filter === filter);
+  });
+  renderList();
+  const visible = getFilteredWorks();
+  if (!visible.find(w => w.id === currentId)) {
+    if (visible[0]) selectWork(visible[0].id, { pushHash: true });
+  }
+}
+
+function getFilteredWorks() {
+  if (currentFilter === "all") return WORKS;
+  return WORKS.filter(w => w.type === currentFilter);
+}
+
+function renderList() {
+  const items = getFilteredWorks();
+  els.count.textContent = `${items.length}`;
+
+  els.list.innerHTML = items.map(w => {
+    const isActive = w.id === currentId;
+    const yearPart = (w.year && w.year.trim()) ? ` · ${escapeHtml(w.year)}` : "";
+    return `
+      <li>
+        <button class="works-item ${isActive ? "is-active" : ""}" type="button" data-id="${w.id}">
+          <span class="wi-title">${escapeHtml(w.title)}</span>
+          <span class="wi-meta">${escapeHtml(w.typeLabel)}${yearPart}</span>
+        </button>
+      </li>
+    `;
+  }).join("");
+
+  els.list.querySelectorAll(".works-item").forEach(btn => {
+    btn.addEventListener("click", () => selectWork(btn.dataset.id, { pushHash: true }));
+  });
+}
+
+function selectWork(id, { pushHash } = { pushHash: false }) {
+  const w = WORKS.find(x => x.id === id);
+  if (!w) return;
+
+  currentId = id;
+
+  const yearPart = (w.year && w.year.trim()) ? ` · ${w.year}` : "";
+  els.meta.textContent = `${w.typeLabel}${yearPart}`;
+  els.title.textContent = w.title;
+
+  if (w.note && w.note.trim()) {
+    els.note.style.display = "block";
+    els.note.textContent = w.note;
+  } else {
+    els.note.style.display = "none";
+    els.note.textContent = "";
+  }
+
+  els.text.textContent = w.text;
+
+  document.querySelectorAll(".works-item").forEach(btn => {
+    btn.classList.toggle("is-active", btn.dataset.id === id);
+  });
+
+  if (pushHash) {
+    history.replaceState(null, "", `#${encodeURIComponent(id)}`);
+  }
+}
+
+function initFromHash() {
+  const hash = decodeURIComponent((location.hash || "").replace("#", "")).trim();
+  const first = getFilteredWorks()[0];
+
+  if (hash && WORKS.some(w => w.id === hash)) {
+    selectWork(hash, { pushHash: false });
+  } else if (first) {
+    selectWork(first.id, { pushHash: true });
+  }
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+els.filterBtns.forEach(btn => {
+  btn.addEventListener("click", () => setActiveFilter(btn.dataset.filter));
+});
+
+renderList();
+initFromHash();
+window.addEventListener("hashchange", () => initFromHash());
+--- File: ./docs/works/index.html ---
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Works — 박종권</title>
+  <meta name="description" content="박종권 시인의 작품 목록과 본문" />
+  <link rel="stylesheet" href="../assets/css/site.css" />
+</head>
+
+<body class="light">
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="../index.html">PJK</a>
+      <nav class="nav">
+        <a href="../index.html">Home</a>
+        <a href="../profile.html">Profile</a>
+        <a href="./index.html" class="is-active">Works</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap page">
+    <section class="section" style="margin-bottom:34px;">
+      <h1 class="title">Works</h1>
+      <p class="subtitle">좌측에서 작품을 선택하면, 우측에 소개/본문(정식님이 입력)을 표시합니다.</p>
+    </section>
+
+    <hr class="rule" />
+
+    <section class="works-split" aria-label="Works Split View">
+      <aside class="works-nav" aria-label="Works list">
+        <div class="works-nav-head">
+          <div class="section-title" style="margin:0;">All Works</div>
+          <div class="works-count" id="worksCount"></div>
+        </div>
+
+        <div class="works-filter" role="tablist" aria-label="Filter">
+          <button class="filter-btn is-active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="book" type="button">시집</button>
+          <button class="filter-btn" data-filter="poem" type="button">시</button>
+          <button class="filter-btn" data-filter="note" type="button">메모</button>
+        </div>
+
+        <ul class="works-list" id="worksList"></ul>
+      </aside>
+
+      <article class="works-pane" aria-live="polite">
+        <div class="works-pane-inner">
+          <div class="works-meta" id="workMeta"></div>
+          <h2 class="works-title" id="workTitle">작품을 선택하세요</h2>
+
+          <div class="works-note" id="workNote"></div>
+
+          <pre class="poem works-text" id="workText">
+좌측 목록에서 작품을 선택하면 이 영역이 갱신됩니다.
+
+- 시집/작품 소개는 제가 넣어두었습니다.
+- 실제 시 전문은 정식님이 보유한 원문으로 교체해 주세요.
+          </pre>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span> Park Jonggwon</span>
+      <span class="muted">All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <script src="./works.js"></script>
+</body>
+</html>
+--- File: ./docs/index.html ---
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>박종권 — 시인</title>
+  <meta name="description" content="박종권 시인의 공식 소개 페이지. 철학과 작품 세계." />
+  <link rel="stylesheet" href="./assets/css/site.css" />
+</head>
+
+<body class="light">
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="./index.html">PJK</a>
+      <nav class="nav">
+        <a href="./index.html" class="is-active">Home</a>
+        <a href="./profile.html">Profile</a>
+        <a href="./works/index.html">Works</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap page home-teaser">
+
+    <section class="section hero">
+      <p class="kicker">POET</p>
+      <h1 class="title">박종권</h1>
+      <p class="subtitle">
+        1999년 월간 『순수문학』을 통해 등단한 시인. 삶과 신앙의 결을 시로 옮긴다.
+      </p>
+
+      <div class="hero-links">
+        <a class="inline-link" href="./profile.html">프로필</a>
+        <span class="sep">/</span>
+        <a class="inline-link" href="./works/index.html">작품</a>
+      </div>
+    </section>
+
+    <hr class="rule" />
+
+    <!-- Concept Gallery (no auto) -->
+    <section class="section concept">
+      <h2 class="section-title">Concept</h2>
+
+      <div class="concept-shell">
+        <div class="concept-rail" id="conceptRail" aria-label="Concept gallery" tabindex="0">
+          <!-- 이미지 파일을 아래 경로로 넣으시면 됩니다.
+               docs/assets/img/concept-01.jpg
+               docs/assets/img/concept-02.jpg
+               docs/assets/img/concept-03.jpg
+          -->
+
+          <figure class="concept-slide" id="c1">
+            <img class="concept-img" src="./assets/img/concept-01.jpg" alt="컨셉 이미지 01"
+                 onerror="this.style.display='none'; this.closest('.concept-slide').classList.add('is-empty');" />
+            <div class="concept-ph">
+              <div class="ph-title">Concept 01</div>
+              <div class="ph-desc">docs/assets/img/concept-01.jpg</div>
+            </div>
+          </figure>
+
+          <figure class="concept-slide" id="c2">
+            <img class="concept-img" src="./assets/img/concept-02.jpg" alt="컨셉 이미지 02"
+                 onerror="this.style.display='none'; this.closest('.concept-slide').classList.add('is-empty');" />
+            <div class="concept-ph">
+              <div class="ph-title">Concept 02</div>
+              <div class="ph-desc">docs/assets/img/concept-02.jpg</div>
+            </div>
+          </figure>
+
+          <figure class="concept-slide" id="c3">
+            <img class="concept-img" src="./assets/img/concept-03.jpg" alt="컨셉 이미지 03"
+                 onerror="this.style.display='none'; this.closest('.concept-slide').classList.add('is-empty');" />
+            <div class="concept-ph">
+              <div class="ph-title">Concept 03</div>
+              <div class="ph-desc">docs/assets/img/concept-03.jpg</div>
+            </div>
+          </figure>
+        </div>
+
+        <div class="concept-dots" aria-label="Concept navigation">
+          <a class="dot is-active" href="#c1" data-slide="0" aria-label="컨셉 1"></a>
+          <a class="dot" href="#c2" data-slide="1" aria-label="컨셉 2"></a>
+          <a class="dot" href="#c3" data-slide="2" aria-label="컨셉 3"></a>
+        </div>
+      </div>
+
+      <p class="caption">
+        이미지가 먼저 분위기를 만들고, 문장이 따라옵니다. 자동 전환은 하지 않습니다.
+      </p>
+    </section>
+
+    <hr class="rule" />
+
+    <section class="section manifesto">
+      <h2 class="section-title">Philosophy</h2>
+
+      <blockquote class="quote">
+        <p class="quote-text">
+          삶의 자리에서 길어 올린 언어는, 조용히 오래 남는다.
+        </p>
+        <footer class="quote-by">— 박종권</footer>
+      </blockquote>
+
+      <div class="body" style="max-width: 62ch;">
+        <p>
+          박종권 시인은 삶과 신앙을 바탕으로 시를 써 왔다.
+          독자에게는 설명보다 여운이 먼저 닿는다.
+        </p>
+      </div>
+    </section>
+
+    <hr class="rule" />
+
+    <section class="section excerpts">
+      <h2 class="section-title">Fragments</h2>
+
+      <!-- 저작권 이슈로 ‘실제 시 구절’ 대신, 작품을 열게 만드는 ‘소개 문장’ 형태로 구성 -->
+      <div class="excerpt-list">
+        <blockquote class="excerpt">
+          <p class="excerpt-text">“삶을 견디는 문장, 그리고 신앙의 온기.”</p>
+          <footer class="excerpt-meta">— 『즐거운 수다』(2025)</footer>
+        </blockquote>
+
+        <blockquote class="excerpt">
+          <p class="excerpt-text">“사랑을 짊어진 채, 가볍지 않은 걸음으로.”</p>
+          <footer class="excerpt-meta">— 『사랑 하나 달랑 지고 가네』(2020)</footer>
+        </blockquote>
+      </div>
+
+      <div class="excerpt-links">
+        <a class="inline-link" href="./works/index.html">작품 전체 보기</a>
+      </div>
+    </section>
+
+    <hr class="rule" />
+
+    <section class="section exit">
+      <h2 class="section-title">Next</h2>
+      <div class="exit-links">
+        <a class="exit-link" href="./works/index.html">Works</a>
+        <a class="exit-link" href="./profile.html">Profile</a>
+      </div>
+      <p class="exit-note">Home은 분위기, Works는 본문, Profile은 기록으로 정리했습니다.</p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span> Park Jonggwon</span>
+      <span class="muted">Contact via Profile</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const rail = document.getElementById("conceptRail");
+    const dots = Array.from(document.querySelectorAll(".concept-dots .dot"));
+
+    function setActiveDot(idx){
+      dots.forEach((d,i)=>d.classList.toggle("is-active", i===idx));
+    }
+
+    dots.forEach(d => {
+      d.addEventListener("click", (e) => {
+        const idx = Number(d.dataset.slide);
+        const slide = rail.children[idx];
+        if (!slide) return;
+        e.preventDefault();
+        slide.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+        setActiveDot(idx);
+        history.replaceState(null, "", d.getAttribute("href"));
+      });
+    });
+
+    rail.addEventListener("scroll", () => {
+      const rect = rail.getBoundingClientRect();
+      let bestIdx = 0;
+      let bestDist = Infinity;
+      Array.from(rail.children).forEach((el, idx) => {
+        const r = el.getBoundingClientRect();
+        const dist = Math.abs(r.left - rect.left);
+        if (dist < bestDist) { bestDist = dist; bestIdx = idx; }
+      });
+      setActiveDot(bestIdx);
+    }, { passive: true });
+  </script>
+</body>
+</html>

@@ -7,6 +7,11 @@
 
   --max: 880px;
 }
+body {
+  font-family: 'Noto Serif KR', serif;
+  line-height: 1.7;
+  color: #111;
+}
 
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; }

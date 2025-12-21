@@ -212,7 +212,7 @@ body::after{
   text-underline-offset: 6px;
   text-decoration-color: var(--u);
   font-weight: 800;
-  font-size: 18px;
+  font-size: 22px;
 }
 .tv-link:hover{
   text-decoration-color: var(--ink);
@@ -418,4 +418,25 @@ body::after{
     width: clamp(96px, 34vw, 160px);
     margin: 12px 0 14px;
   }
+}
+/* ---------------------------------------------------------
+   Profile image edge fade
+   - 좌/우 경계를 배경색으로 자연스럽게 블렌딩
+--------------------------------------------------------- */
+.tv-panel::before{
+  content:"";
+  position:absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+
+  /* 좌/우만 부드럽게 페이드 */
+  background:
+    linear-gradient(
+      90deg,
+      var(--bg) 0%,
+      rgba(216,207,196,0.0) 12%,
+      rgba(216,207,196,0.0) 88%,
+      var(--bg) 100%
+    );
 }

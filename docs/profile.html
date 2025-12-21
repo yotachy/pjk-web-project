@@ -1,148 +1,37 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>소개 — 박종권</title>
-  <meta name="description" content="박종권 시인의 소개와 연보" />
-
-  <link rel="stylesheet" href="./assets/style.css" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile</title>
+  <link rel="stylesheet" href="./assets/style.css">
 </head>
+<body>
 
-<body class="light">
-  <header class="top" data-topbar>
-    <div class="top-inner">
-      <a class="brand" href="./index.html" aria-label="PJK Home">
-        <span class="brand-mark">PJK</span>
-      </a>
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">PJK</div>
+    <nav class="nav">
+      <a href="./index.html">홈</a>
+      <a class="active" href="./profile.html">소개</a>
+      <a href="./works/index.html">작품</a>
+    </nav>
+  </div>
+</header>
 
-      <nav class="nav" aria-label="Main Navigation">
-        <a href="./index.html">홈</a>
-        <a href="./profile.html" class="is-active">소개</a>
-        <a href="./works/index.html">작품</a>
-      </nav>
-
-      <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" data-nav-toggle>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
+<main class="page">
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>Profile Page</h1>
+        <p>구조만 유지합니다.</p>
+      </div>
+      <div class="hero-visual"></div>
     </div>
+  </section>
+</main>
 
-    <div class="drawer" data-drawer aria-hidden="true">
-      <div class="drawer-backdrop" data-drawer-close></div>
-      <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="모바일 메뉴">
-        <div class="drawer-head">
-          <div class="drawer-brand">PJK</div>
-          <button class="drawer-close" type="button" aria-label="메뉴 닫기" data-drawer-close>닫기</button>
-        </div>
-        <div class="drawer-links">
-          <a href="./index.html">홈</a>
-          <a href="./profile.html" class="is-active">소개</a>
-          <a href="./works/index.html">작품</a>
-        </div>
-      </div>
-    </div>
-  </header>
+<footer class="footer">© Park Jongkwon</footer>
 
-  <main class="page">
-    <section class="hero hero--inner">
-      <div class="hero-grid hero-grid--single">
-        <div class="hero-copy">
-          <div class="kicker">소개</div>
-          <h1 class="hero-title">박종권</h1>
-          <p class="hero-subtitle">전라북도 김제 출생. 1999년 월간 『순수문학』 등단.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="content">
-      <div class="content-inner">
-        <div class="content-grid">
-          <article class="panel">
-            <div class="panel-head">
-              <h2 class="panel-title">Overview</h2>
-              <p class="panel-sub">작품 세계를 관통하는 핵심 문장</p>
-            </div>
-            <div class="prose">
-              <p>
-                박종권 시인은 삶과 신앙의 결을 언어로 옮겨, 과장 없이 오래 남는 문장을 지향합니다.
-                독자에게는 설명보다 여운이 먼저 닿습니다.
-              </p>
-            </div>
-          </article>
-
-          <article class="panel">
-            <div class="panel-head">
-              <h2 class="panel-title">Basic</h2>
-              <p class="panel-sub">정리된 이력 정보</p>
-            </div>
-
-            <div class="facts">
-              <div class="fact">
-                <div class="fact-k">출생</div>
-                <div class="fact-v">전라북도 김제</div>
-              </div>
-              <div class="fact">
-                <div class="fact-k">학력</div>
-                <div class="fact-v">전주고등학교 · 익산 남성중학교 · 인하대학교 졸업</div>
-              </div>
-              <div class="fact">
-                <div class="fact-k">등단</div>
-                <div class="fact-v">1999년 월간 『순수문학』</div>
-              </div>
-            </div>
-          </article>
-
-          <article class="panel panel--wide">
-            <div class="panel-head">
-              <h2 class="panel-title">Timeline</h2>
-              <p class="panel-sub">작품/활동 연보</p>
-            </div>
-
-            <ol class="timeline">
-              <li class="tl">
-                <div class="tl-year">1999</div>
-                <div class="tl-body">월간 『순수문학』 등단</div>
-              </li>
-              <li class="tl">
-                <div class="tl-year">2020</div>
-                <div class="tl-body">시집 『사랑 하나 달랑 지고 가네』</div>
-              </li>
-              <li class="tl">
-                <div class="tl-year">2025</div>
-                <div class="tl-body">제3시집 『즐거운 수다』</div>
-              </li>
-            </ol>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="next">
-      <div class="next-inner">
-        <div class="next-left">
-          <div class="next-title">Next</div>
-          <div class="next-sub">소개는 기록, 작품은 본문 중심으로 정리했습니다.</div>
-        </div>
-        <div class="next-links">
-          <a class="next-link" href="./works/index.html">작품</a>
-          <a class="next-link" href="./index.html">홈</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-      <span>© <span id="year"></span> Park Jonggwon</span>
-      <span class="muted">All rights reserved.</span>
-    </div>
-  </footer>
-
-  <script src="./assets/js/site.js"></script>
 </body>
 </html>

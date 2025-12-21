@@ -1,203 +1,47 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>박종권 — 시인</title>
-  <meta name="description" content="박종권 시인의 공식 소개 페이지. 철학과 작품 세계." />
-
-  <link rel="stylesheet" href="./assets/style.css" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PJK</title>
+  <link rel="stylesheet" href="./assets/style.css">
 </head>
+<body>
 
-<body class="light">
-  <!-- Topbar (TradingView-like) -->
-  <header class="top" data-topbar>
-    <div class="top-inner">
-      <a class="brand" href="./index.html" aria-label="PJK Home">
-        <span class="brand-mark">PJK</span>
-      </a>
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">PJK</div>
+    <nav class="nav">
+      <a class="active" href="./index.html">홈</a>
+      <a href="./profile.html">소개</a>
+      <a href="./works/index.html">작품</a>
+    </nav>
+  </div>
+</header>
 
-      <nav class="nav" aria-label="Main Navigation">
-        <a href="./index.html" class="is-active">홈</a>
-        <a href="./profile.html">소개</a>
-        <a href="./works/index.html">작품</a>
-      </nav>
-
-      <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" data-nav-toggle>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
+<main class="page">
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>Viewport-first<br>Layout</h1>
+        <p>컨텐츠는 무시하고 레이아웃만 설계된 상태입니다.</p>
+      </div>
+      <div class="hero-visual"></div>
     </div>
+  </section>
 
-    <!-- Mobile drawer -->
-    <div class="drawer" data-drawer aria-hidden="true">
-      <div class="drawer-backdrop" data-drawer-close></div>
-      <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="모바일 메뉴">
-        <div class="drawer-head">
-          <div class="drawer-brand">PJK</div>
-          <button class="drawer-close" type="button" aria-label="메뉴 닫기" data-drawer-close>닫기</button>
-        </div>
-        <div class="drawer-links">
-          <a href="./index.html" class="is-active">홈</a>
-          <a href="./profile.html">소개</a>
-          <a href="./works/index.html">작품</a>
-        </div>
-      </div>
+  <section class="band">
+    <div class="band-inner">
+      <div class="band-card"></div>
+      <div class="band-card"></div>
+      <div class="band-card"></div>
     </div>
-  </header>
+  </section>
+</main>
 
-  <!-- Hero: full-bleed -->
-  <main class="page">
-    <section class="hero hero--home">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <div class="kicker">시인</div>
-          <h1 class="hero-title">박종권</h1>
-          <p class="hero-subtitle">
-            1999년 월간 『순수문학』 등단. 삶과 신앙의 결을 시로 옮깁니다.
-          </p>
+<footer class="footer">
+  © Park Jongkwon
+</footer>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="./works/index.html">작품 보기</a>
-            <a class="btn btn-ghost" href="./profile.html">소개</a>
-          </div>
-
-          <div class="hero-meta">
-            <span class="pill">Literature</span>
-            <span class="pill">Faith</span>
-            <span class="pill">Life</span>
-          </div>
-        </div>
-
-        <div class="hero-media">
-          <!-- 메인 히어로 이미지: 있으면 보여주고, 없으면 플레이스홀더가 보입니다 -->
-          <div class="media-frame">
-            <img class="media-img" src="./assets/img/hero.jpg" alt="박종권 — 대표 이미지"
-                 onerror="this.style.display='none'; this.closest('.media-frame').classList.add('is-empty');">
-            <div class="media-ph">
-              <div class="ph-title">Hero Image</div>
-              <div class="ph-desc">docs/assets/img/hero.jpg</div>
-            </div>
-          </div>
-
-          <div class="media-caption">
-            <div class="caption-title">Editor’s note</div>
-            <p class="caption-text">이미지가 분위기를 만들고, 문장이 따라옵니다.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Content rail: full width, “꽉 찬” 구성 -->
-    <section class="rail">
-      <div class="rail-inner">
-        <div class="rail-head">
-          <h2 class="rail-title">Concept</h2>
-          <p class="rail-sub">작품 세계의 질감과 온도를 먼저 보여줍니다.</p>
-        </div>
-
-        <div class="concept-shell">
-          <div class="concept-rail" id="conceptRail" aria-label="Concept gallery" tabindex="0">
-            <figure class="concept-slide" id="c1">
-              <img class="concept-img" src="./assets/img/concept-01.jpg" alt="컨셉 이미지 01"
-                   onerror="this.style.display='none'; this.closest('.concept-slide').classList.add('is-empty');" />
-              <div class="concept-ph">
-                <div class="ph-title">Concept 01</div>
-                <div class="ph-desc">docs/assets/img/concept-01.jpg</div>
-              </div>
-            </figure>
-
-            <figure class="concept-slide" id="c2">
-              <img class="concept-img" src="./assets/img/concept-02.jpg" alt="컨셉 이미지 02"
-                   onerror="this.style.display='none'; this.closest('.concept-slide').classList.add('is-empty');" />
-              <div class="concept-ph">
-                <div class="ph-title">Concept 02</div>
-                <div class="ph-desc">docs/assets/img/concept-02.jpg</div>
-              </div>
-            </figure>
-
-            <figure class="concept-slide" id="c3">
-              <img class="concept-img" src="./assets/img/concept-03.jpg" alt="컨셉 이미지 03"
-                   onerror="this.style.display='none'; this.closest('.concept-slide').classList.add('is-empty');" />
-              <div class="concept-ph">
-                <div class="ph-title">Concept 03</div>
-                <div class="ph-desc">docs/assets/img/concept-03.jpg</div>
-              </div>
-            </figure>
-          </div>
-
-          <div class="concept-dots" aria-label="Concept navigation">
-            <a class="dot is-active" href="#c1" data-slide="0" aria-label="컨셉 1"></a>
-            <a class="dot" href="#c2" data-slide="1" aria-label="컨셉 2"></a>
-            <a class="dot" href="#c3" data-slide="2" aria-label="컨셉 3"></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="grid2">
-      <div class="grid2-inner">
-        <article class="card">
-          <div class="card-eyebrow">Philosophy</div>
-          <h3 class="card-title">조용히 오래 남는 문장</h3>
-          <blockquote class="quote">
-            <p class="quote-text">삶의 자리에서 길어 올린 언어는, 조용히 오래 남는다.</p>
-            <footer class="quote-by">— 박종권</footer>
-          </blockquote>
-          <p class="card-body">
-            박종권 시인은 삶과 신앙의 결을 바탕으로 시를 써 왔습니다.
-            독자에게는 설명보다 여운이 먼저 닿습니다.
-          </p>
-          <div class="card-cta">
-            <a class="link" href="./profile.html">소개에서 연보 보기</a>
-          </div>
-        </article>
-
-        <article class="card card--dark">
-          <div class="card-eyebrow">Fragments</div>
-          <h3 class="card-title">작품으로 들어가는 문</h3>
-          <div class="frags">
-            <div class="frag">
-              <div class="frag-text">“삶을 견디는 문장, 그리고 신앙의 온기.”</div>
-              <div class="frag-meta">— 『즐거운 수다』(2025)</div>
-            </div>
-            <div class="frag">
-              <div class="frag-text">“사랑을 짊어진 채, 가볍지 않은 걸음으로.”</div>
-              <div class="frag-meta">— 『사랑 하나 달랑 지고 가네』(2020)</div>
-            </div>
-          </div>
-          <div class="card-cta">
-            <a class="btn btn-light" href="./works/index.html">작품 전체 보기</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="next">
-      <div class="next-inner">
-        <div class="next-left">
-          <div class="next-title">Next</div>
-          <div class="next-sub">Home은 분위기, Works는 본문, Profile은 기록으로 정리했습니다.</div>
-        </div>
-        <div class="next-links">
-          <a class="next-link" href="./works/index.html">작품</a>
-          <a class="next-link" href="./profile.html">소개</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-      <span>© <span id="year"></span> Park Jonggwon</span>
-      <span class="muted">Contact via Profile</span>
-    </div>
-  </footer>
-
-  <script src="./assets/js/site.js"></script>
 </body>
 </html>

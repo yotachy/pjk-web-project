@@ -5,75 +5,110 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>작품 — 박종권</title>
   <meta name="description" content="박종권 시인의 작품 목록과 본문" />
-  <link rel="stylesheet" href="../assets/css/site.css" />
+
+  <link rel="stylesheet" href="../assets/style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="light">
-  <header class="top">
-    <div class="wrap top-inner">
-      <a class="brand" href="../index.html">PJK</a>
-      <nav class="nav">
+  <header class="top" data-topbar>
+    <div class="top-inner">
+      <a class="brand" href="../index.html" aria-label="PJK Home">
+        <span class="brand-mark">PJK</span>
+      </a>
+
+      <nav class="nav" aria-label="Main Navigation">
         <a href="../index.html">홈</a>
         <a href="../profile.html">소개</a>
         <a href="./index.html" class="is-active">작품</a>
       </nav>
+
+      <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" data-nav-toggle>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+
+    <div class="drawer" data-drawer aria-hidden="true">
+      <div class="drawer-backdrop" data-drawer-close></div>
+      <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="모바일 메뉴">
+        <div class="drawer-head">
+          <div class="drawer-brand">PJK</div>
+          <button class="drawer-close" type="button" aria-label="메뉴 닫기" data-drawer-close>닫기</button>
+        </div>
+        <div class="drawer-links">
+          <a href="../index.html">홈</a>
+          <a href="../profile.html">소개</a>
+          <a href="./index.html" class="is-active">작품</a>
+        </div>
+      </div>
     </div>
   </header>
 
-  <main class="wrap page">
-    <section class="section" style="margin-bottom:34px;">
-      <h1 class="title">작품</h1>
-      <p class="subtitle">좌측에서 작품을 선택하면, 우측에 소개/본문(정식님이 입력)을 표시합니다.</p>
+  <main class="page">
+    <section class="hero hero--inner">
+      <div class="hero-grid hero-grid--single">
+        <div class="hero-copy">
+          <div class="kicker">작품</div>
+          <h1 class="hero-title">Works</h1>
+          <p class="hero-subtitle">좌측에서 작품을 선택하면, 우측에 소개/본문(정식님 입력)을 표시합니다.</p>
+        </div>
+      </div>
     </section>
 
-    <hr class="rule" />
+    <section class="content">
+      <div class="content-inner">
+        <section class="works" aria-label="Works Split View">
+          <aside class="works-nav" aria-label="Works list">
+            <div class="works-nav-head">
+              <div>
+                <div class="panel-title" style="margin:0;">전체 작품</div>
+                <div class="muted small">선택한 작품이 오른쪽에 표시됩니다.</div>
+              </div>
+              <div class="works-count" id="worksCount"></div>
+            </div>
 
-    <section class="works-split" aria-label="Works Split View">
-      <aside class="works-nav" aria-label="Works list">
-        <div class="works-nav-head">
-          <div class="section-title" style="margin:0;">전체 작품</div>
-          <div class="works-count" id="worksCount"></div>
-        </div>
+            <div class="works-filter" role="tablist" aria-label="Filter">
+              <button class="filter-btn is-active" data-filter="all" type="button">All</button>
+              <button class="filter-btn" data-filter="book" type="button">시집</button>
+              <button class="filter-btn" data-filter="poem" type="button">시</button>
+              <button class="filter-btn" data-filter="note" type="button">메모</button>
+            </div>
 
-        <div class="works-filter" role="tablist" aria-label="Filter">
-          <button class="filter-btn is-active" data-filter="all" type="button">All</button>
-          <button class="filter-btn" data-filter="book" type="button">시집</button>
-          <button class="filter-btn" data-filter="poem" type="button">시</button>
-          <button class="filter-btn" data-filter="note" type="button">메모</button>
-        </div>
+            <ul class="works-list" id="worksList"></ul>
+          </aside>
 
-        <ul class="works-list" id="worksList"></ul>
-      </aside>
+          <article class="works-pane" aria-live="polite">
+            <div class="works-pane-inner">
+              <div class="works-meta" id="workMeta"></div>
+              <h2 class="works-title" id="workTitle">작품을 선택하세요</h2>
 
-      <article class="works-pane" aria-live="polite">
-        <div class="works-pane-inner">
-          <div class="works-meta" id="workMeta"></div>
-          <h2 class="works-title" id="workTitle">작품을 선택하세요</h2>
+              <div class="works-note" id="workNote"></div>
 
-          <div class="works-note" id="workNote"></div>
-
-          <pre class="poem works-text" id="workText">
+              <pre class="works-text" id="workText">
 좌측 목록에서 작품을 선택하면 이 영역이 갱신됩니다.
 
 - 시집/작품 소개는 제가 넣어두었습니다.
 - 실제 시 전문은 정식님이 보유한 원문으로 교체해 주세요.
-          </pre>
-        </div>
-      </article>
+              </pre>
+            </div>
+          </article>
+        </section>
+      </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="wrap footer-inner">
+    <div class="footer-inner">
       <span>© <span id="year"></span> Park Jonggwon</span>
       <span class="muted">All rights reserved.</span>
     </div>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-
+  <script src="../assets/js/site.js"></script>
   <script src="./works.js"></script>
 </body>
 </html>

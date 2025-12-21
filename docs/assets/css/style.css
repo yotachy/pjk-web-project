@@ -1,184 +1,421 @@
-/* =========================
-   Global Reset & Tokens
-========================= */
-:root {
-  --bg: #0b0d12;
-  --panel: #11141c;
-  --line: rgba(255,255,255,.08);
-  --text: #e8eaf0;
-  --muted: #9aa0b2;
-  --accent: #5c7cff;
+/* =========================================================
+   Park Jongkwon — Home (Tuned)
+   - Smooth mid-width behavior (no ugly wraps)
+   - 2-col → 1-col breakpoint tuned to 1180px
+   - Fluid type via clamp to prevent sudden line-break jumps
+   - CTA pinned to photo bottom line on 2-col desktop only
+========================================================= */
 
-  --max: 1600px;
-  --pad: clamp(16px, 3vw, 40px);
+:root{
+  --bg: #d8cfc4;
+  --ink: rgba(18,18,18,.92);
+  --muted: rgba(18,18,18,.62);
+  --hairline: rgba(18,18,18,.10);
+  --u: rgba(18,18,18,.22);
+
+  --font: "Noto Sans KR", system-ui, -apple-system, "Segoe UI", Roboto,
+          "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+
+  --base: 18px;
+  --gutter: clamp(18px, 3vw, 42px);
+  --topH: 96px;
+
+  --heroMax: 1440px;
+
+  /* photo panel height (2-col baseline) */
+  --panelH: min(64vh, 680px);
 }
 
-* { box-sizing: border-box; }
-html, body {
-  margin: 0;
-  padding: 0;
+*{ box-sizing: border-box; }
+html,body{ margin:0; padding:0; }
+
+body{
+  font-family: var(--font);
+  font-size: var(--base);
   background: var(--bg);
-  color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.01em;
 }
 
-/* =========================
-   Header (TradingView-style)
-========================= */
-.header {
+/* subtle grain */
+body::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+  opacity: .07;
+  mix-blend-mode: multiply;
+}
+
+/* ---------------------------------------------------------
+   Top Nav
+--------------------------------------------------------- */
+.tv-top{
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(11,13,18,.75);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line);
+  height: var(--topH);
+  background: transparent;
+  backdrop-filter: blur(10px);
 }
 
-.header-inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0 var(--pad);
-  height: 64px;
+.tv-top__inner{
+  height: var(--topH);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: var(--heroMax);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
 }
 
-.brand {
-  font-weight: 700;
-  letter-spacing: .4px;
-}
-
-.nav {
-  display: flex;
-  gap: 24px;
-}
-
-.nav a {
-  color: var(--muted);
-  font-size: 14px;
+.tv-brand{
+  color: var(--ink);
   text-decoration: none;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.tv-brand__title{ font-size: 36px; }
+
+.tv-nav{
+  display: flex;
+  align-items: center;
+  gap: clamp(22px, 2.8vw, 44px);
+}
+.tv-tab{
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 27px;
+  line-height: 1;
+}
+.tv-tab:hover{
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--u);
+}
+.tv-tab.is-active{
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--ink);
 }
 
-.nav a.active,
-.nav a:hover {
-  color: var(--text);
+/* ---------------------------------------------------------
+   Hero Layout (2-col baseline)
+--------------------------------------------------------- */
+.tv-hero{
+  min-height: calc(100vh - var(--topH));
+  display: flex;
+  align-items: stretch;
 }
 
-/* =========================
-   Page Canvas
-========================= */
-.page {
-  min-height: 100vh;
+.tv-hero__inner{
+  width: 100%;
+  max-width: var(--heroMax);
+  margin: 0 auto;
+  padding: clamp(22px, 3.2vw, 44px) var(--gutter) clamp(28px, 4vw, 60px);
+
+  display: grid;
+
+  /* keep minimum readable widths in 2-col */
+  grid-template-columns: minmax(420px, 1.05fr) minmax(520px, 1.25fr);
+
+  gap: clamp(18px, 3vw, 44px);
+  align-items: stretch;
+}
+
+/* ---------------------------------------------------------
+   Left
+--------------------------------------------------------- */
+.tv-left{
+  padding-top: clamp(6px, 1.2vw, 18px);
+
+  /* needed for CTA pinning in 2-col */
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 
-/* =========================
-   Hero (Viewport-based)
-========================= */
-.hero {
-  flex: 1;
-  display: grid;
-  place-items: center;
-  padding: calc(var(--pad) * 2) var(--pad);
+.tv-divider{
+  height: 1px;
+  width: clamp(120px, 18vw, 220px);
+  margin: 14px 0 18px;
+  background: linear-gradient(90deg, transparent, var(--hairline), transparent);
+  opacity: .9;
 }
 
-.hero-grid {
-  max-width: var(--max);
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: clamp(32px, 6vw, 80px);
-  align-items: center;
-}
-
-.hero-copy h1 {
-  font-size: clamp(40px, 6vw, 84px);
-  line-height: 1.05;
+/* No mid-word breaks in Korean */
+.tv-line{
   margin: 0 0 20px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+
+  word-break: keep-all;
+  overflow-wrap: normal;
+  line-break: strict;
 }
 
-.hero-copy p {
-  max-width: 42ch;
+/* ✅ Fluid type: smooth downscale on mid widths */
+.tv-line--big{
+  font-size: clamp(44px, 4.6vw, 54px);
+  line-height: 1.35;
+  margin-top: 20px;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+
+.tv-line--small{
+  font-size: clamp(22px, 2.2vw, 27px);
   color: var(--muted);
-  font-size: 16px;
+  font-weight: 700;
 }
 
-.hero-visual {
-  background: linear-gradient(135deg, #1a1f33, #0b0d12);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  aspect-ratio: 16 / 10;
+/* CTA (default flow; pinned only in 2-col desktop rule below) */
+.tv-cta{
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 28px;
+  flex-wrap: wrap;
 }
 
-/* =========================
-   Band Sections (Full-width)
-========================= */
-.band {
-  border-top: 1px solid var(--line);
-  padding: clamp(40px, 8vw, 120px) var(--pad);
+.tv-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255,255,255,.90);
+  color: rgba(14,14,16,.95);
+  font-weight: 900;
+  text-decoration: none;
+  transition: transform .12s ease, opacity .12s ease;
+  max-width: 420px;
+  width: auto;
+  white-space: nowrap;
+}
+.tv-btn:hover{ transform: translateY(-1px); opacity: .95; }
+.tv-btn:active{ transform: translateY(0); opacity: .9; }
+
+.tv-link{
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--u);
+  font-weight: 800;
+  font-size: 18px;
+}
+.tv-link:hover{
+  text-decoration-color: var(--ink);
+  text-decoration-thickness: 2px;
 }
 
-.band-inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+/* ---------------------------------------------------------
+   Right (Photo)
+--------------------------------------------------------- */
+.tv-right{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.band-card {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 24px;
-  min-height: 160px;
+.tv-panel{
+  width: 100%;
+  height: var(--panelH);
+  margin: 0;
+  border: 0;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
 }
 
-/* =========================
-   Works Layout
-========================= */
-.works {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  min-height: calc(100vh - 64px);
+/* shimmer */
+.tv-panel::after{
+  content:"";
+  position:absolute;
+  inset:-18%;
+  pointer-events:none;
+  background:
+    radial-gradient(60% 40% at 30% 20%, rgba(255,255,255,.10), transparent 60%),
+    linear-gradient(115deg,
+      transparent 0%,
+      rgba(255,255,255,.10) 42%,
+      rgba(255,255,255,.18) 50%,
+      rgba(255,255,255,.10) 58%,
+      transparent 100%
+    );
+  mix-blend-mode: soft-light;
+  opacity: .55;
+  transform: translate3d(-7%, 0, 0);
+  will-change: transform, opacity;
+  animation: tvShimmer 9s ease-in-out infinite;
 }
 
-.works-nav {
-  border-right: 1px solid var(--line);
-  padding: var(--pad);
+.tv-panel__img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+  transform-origin: 50% 45%;
+  will-change: transform;
+  animation: tvCinematicMove 13.5s ease-in-out infinite;
 }
 
-.works-main {
-  padding: var(--pad);
+.tv-panel__cap{
+  position:absolute;
+  left: 18px;
+  bottom: 14px;
+  color: rgba(18,18,18,.52);
+  font-weight: 900;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  font-size: 12px;
+  mix-blend-mode: multiply;
 }
 
-/* =========================
+@keyframes tvCinematicMove{
+  0%{   transform: scale(1) translate3d(0,0,0); }
+  28%{  transform: scale(1.035) translate3d(-0.6%, -0.3%, 0); }
+  55%{  transform: scale(1.055) translate3d(-0.2%, -0.8%, 0); }
+  78%{  transform: scale(1.03)  translate3d(0.4%, -0.2%, 0); }
+  100%{ transform: scale(1) translate3d(0,0,0); }
+}
+
+@keyframes tvShimmer{
+  0%   { transform: translate3d(-7%, 0, 0); opacity: .42; }
+  50%  { transform: translate3d( 7%, 0, 0); opacity: .60; }
+  100% { transform: translate3d(-7%, 0, 0); opacity: .42; }
+}
+
+@media (hover:hover){
+  .tv-panel__img{
+    transition: transform .45s ease, filter .45s ease;
+  }
+  .tv-panel:hover .tv-panel__img{
+    transform: scale(1.07) translate3d(0.2%, -0.2%, 0);
+    filter: contrast(1.02) saturate(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .tv-panel__img,
+  .tv-panel::after{
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ---------------------------------------------------------
    Footer
-========================= */
-.footer {
-  border-top: 1px solid var(--line);
-  padding: 24px var(--pad);
+--------------------------------------------------------- */
+.tv-foot{
+  padding: 18px 0 26px;
+}
+.tv-foot__inner{
+  max-width: var(--heroMax);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 650;
+}
+.tv-foot__muted{ opacity: .9; }
+
+/* =========================================================
+   ✅ 2-col Desktop (horizontal): pin CTA to photo bottom line
+========================================================= */
+@media (min-width: 981px) and (min-aspect-ratio: 1/1){
+  .tv-hero__inner{ align-items: start; }
+  .tv-right{ align-items: flex-start; }
+  .tv-left{
+    padding-top: 0;
+    height: var(--panelH);
+  }
+  .tv-cta{
+    margin-top: auto;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
 }
 
-/* =========================
-   Responsive
-========================= */
-@media (max-width: 1024px) {
-  .hero-grid {
+/* =========================================================
+   ✅ Tuned breakpoint: collapse to 1-col earlier (1180px)
+========================================================= */
+@media (max-width: 1180px){
+  .tv-hero__inner{
     grid-template-columns: 1fr;
+    gap: 22px;
   }
-  .band-inner {
-    grid-template-columns: 1fr;
+
+  /* 1-col: natural flow */
+  .tv-left{ height: auto; }
+  .tv-cta{
+    margin-top: 28px;
+    padding: 0;
   }
-  .works {
-    grid-template-columns: 1fr;
+
+  .tv-panel{
+    height: min(52vh, 540px);
   }
-  .works-nav {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
+}
+
+/* =========================================================
+   Mobile
+========================================================= */
+@media (max-width: 680px){
+  :root{
+    --topH: 76px;
+    --base: 17px;
+  }
+
+  .tv-top__inner{
+    padding: 0 clamp(14px, 4.5vw, 18px);
+  }
+
+  .tv-brand__title{ font-size: 26px; }
+  .tv-nav{ gap: 14px; }
+  .tv-tab{ font-size: 18px; }
+
+  .tv-hero__inner{
+    padding: 18px clamp(14px, 4.5vw, 18px) 28px;
+  }
+
+  .tv-line--big{
+    font-size: 42px;   /* slightly bigger on narrow */
+    line-height: 1.45;
+    margin-top: 14px;
+    margin-bottom: 26px;
+  }
+
+  .tv-btn{
+    height: 50px;
+    padding: 0 18px;
+    max-width: 100%;
+  }
+
+  .tv-panel{
+    height: min(46vh, 420px);
+  }
+
+  .tv-panel::after{ opacity: .45; }
+
+  .tv-divider{
+    width: clamp(96px, 34vw, 160px);
+    margin: 12px 0 14px;
   }
 }

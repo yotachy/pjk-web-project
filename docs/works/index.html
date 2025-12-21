@@ -1,35 +1,195 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Works</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>박종권 — 시인</title>
+  <meta name="description" content="박종권 시인의 메인. 작품과 기록을 한 화면의 리듬으로 정리합니다." />
+
+  <!-- ✅ 경로 고정 -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body>
 
-<header class="header">
-  <div class="header-inner">
-    <div class="brand">PJK</div>
-    <nav class="nav">
-      <a href="../index.html">홈</a>
-      <a href="../profile.html">소개</a>
-      <a class="active" href="./index.html">작품</a>
-    </nav>
-  </div>
-</header>
+<body class="theme-auto">
+  <!-- Top Nav (텍스트만) -->
+  <header class="tv-top" role="banner">
+    <div class="tv-top__inner">
+      <a class="tv-brand" href="./index.html" aria-label="홈으로">
+        <span class="tv-brand__title">시인 박종권</span>
+      </a>
 
-<main class="works">
-  <aside class="works-nav">
-    Works List
-  </aside>
-  <section class="works-main">
-    Works Content
-  </section>
-</main>
+      <nav class="tv-nav" aria-label="주요 메뉴">
+        <a class="tv-tab is-active" href="./index.html" aria-current="page">메인</a>
+        <a class="tv-tab" href="./profile.html">소개</a>
+        <a class="tv-tab" href="./activity.html">활동</a>
+        <a class="tv-tab" href="./works/index.html">작품</a>
+      </nav>
+    </div>
+  </header>
 
-<footer class="footer">© Park Jongkwon</footer>
+  <!-- Hero -->
+  <main class="tv-hero" role="main">
+    <div class="tv-hero__inner">
+      <!-- LEFT -->
+      <section class="tv-left" aria-label="메인 소개">
+        <div class="tv-eyebrow">시인</div>
 
-<script src="./works.js"></script>
+        <h1 class="tv-title">박종권</h1>
+
+        <!-- ✅ 문구 1/2 분리: 크기 정책을 CSS에서 정확히 제어 -->
+        <p class="tv-line tv-line--big">멋진 문구1</p>
+        <p class="tv-line tv-line--small">멋진 문구2</p>
+
+        <div class="tv-cta">
+          <a class="tv-btn" href="./works/index.html">작품 보기</a>
+          <a class="tv-link" href="./profile.html">소개 보기</a>
+        </div>
+
+        <div class="tv-meta">
+          <div class="tv-meta__row">
+            <span class="tv-meta__k">Theme</span>
+            <span class="tv-meta__v">Poetry • Archive</span>
+          </div>
+          <div class="tv-meta__row">
+            <span class="tv-meta__k">Updated</span>
+            <span class="tv-meta__v">—</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT (프로필 사진) -->
+      <section class="tv-right" aria-label="프로필 비주얼">
+        <figure class="tv-panel">
+          <!-- ✅ 파일 경로: docs/assets/img/profile.jpg -->
+          <img
+            id="profileImg"
+            class="tv-panel__img"
+            src="./assets/img/profile.jpg"
+            alt="박종권 프로필 사진"
+            loading="eager"
+            decoding="async"
+            crossorigin="anonymous"
+          />
+          <figcaption class="tv-panel__cap">OFFICIAL</figcaption>
+        </figure>
+      </section>
+    </div>
+  </main>
+
+  <footer class="tv-foot" role="contentinfo">
+    <div class="tv-foot__inner">
+      <span>© <span id="year"></span> Park Jongkwon</span>
+      <span class="tv-foot__muted">Poetry • Archive</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ---- Theme: profile.jpg 배경 톤을 사이트 전체 배경으로 자동 적용 ----
+    (function applyThemeFromProfile(){
+      const img = document.getElementById("profileImg");
+      if (!img) return;
+
+      function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
+      function rgbToHex(r,g,b){
+        const h = (v)=>v.toString(16).padStart(2,"0");
+        return `#${h(r)}${h(g)}${h(b)}`;
+      }
+      function luminance(r,g,b){
+        const a=[r,g,b].map(v=>{
+          v/=255;
+          return v<=0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055, 2.4);
+        });
+        return 0.2126*a[0]+0.7152*a[1]+0.0722*a[2];
+      }
+
+      function sampleEdgeColor(image){
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d", { willReadFrequently: true });
+        if (!ctx) return null;
+
+        const w = Math.max(64, Math.min(256, image.naturalWidth || 256));
+        const h = Math.max(64, Math.min(256, image.naturalHeight || 256));
+        canvas.width = w;
+        canvas.height = h;
+
+        try {
+          ctx.drawImage(image, 0, 0, w, h);
+          const data = ctx.getImageData(0, 0, w, h).data;
+
+          const samples = [];
+          const step = Math.max(2, Math.floor(Math.min(w,h) / 32));
+          const band = Math.max(2, Math.floor(Math.min(w,h) * 0.12));
+
+          function pushPixel(x,y){
+            const i = (y*w + x) * 4;
+            const r = data[i], g = data[i+1], b = data[i+2], a = data[i+3];
+            if (a < 12) return;
+            samples.push([r,g,b]);
+          }
+
+          for (let y=0; y<band; y+=step) for (let x=0; x<w; x+=step) pushPixel(x,y);
+          for (let y=h-band; y<h; y+=step) for (let x=0; x<w; x+=step) pushPixel(x,y);
+          for (let x=0; x<band; x+=step) for (let y=0; y<h; y+=step) pushPixel(x,y);
+          for (let x=w-band; x<w; x+=step) for (let y=0; y<h; y+=step) pushPixel(x,y);
+
+          if (!samples.length) return null;
+
+          const rs = samples.map(s=>s[0]).sort((a,b)=>a-b);
+          const gs = samples.map(s=>s[1]).sort((a,b)=>a-b);
+          const bs = samples.map(s=>s[2]).sort((a,b)=>a-b);
+
+          const lo = Math.floor(samples.length * 0.2);
+          const hi = Math.floor(samples.length * 0.8);
+
+          function avg(arr){
+            let sum=0, n=0;
+            for (let i=lo; i<hi; i++){ sum += arr[i]; n++; }
+            return n ? Math.round(sum/n) : Math.round(arr[Math.floor(arr.length/2)]);
+          }
+
+          return [avg(rs), avg(gs), avg(bs)];
+        } catch(e){
+          return null;
+        }
+      }
+
+      function setVarsFromRGB(r,g,b){
+        const bg = rgbToHex(r,g,b);
+        const lum = luminance(r,g,b);
+
+        const ink = lum < 0.45 ? "rgba(255,255,255,.92)" : "rgba(18,18,18,.92)";
+        const muted = lum < 0.45 ? "rgba(255,255,255,.68)" : "rgba(18,18,18,.62)";
+        const hairline = lum < 0.45 ? "rgba(255,255,255,.10)" : "rgba(18,18,18,.10)";
+
+        document.documentElement.style.setProperty("--bg", bg);
+        document.documentElement.style.setProperty("--ink", ink);
+        document.documentElement.style.setProperty("--muted", muted);
+        document.documentElement.style.setProperty("--hairline", hairline);
+
+        const adj = lum < 0.45 ? 18 : -18;
+        document.documentElement.style.setProperty("--bg2",
+          rgbToHex(clamp(r+adj,0,255), clamp(g+adj,0,255), clamp(b+adj,0,255))
+        );
+
+        // 링크 언더라인 컬러도 배경 톤에 맞춰 자연스럽게
+        document.documentElement.style.setProperty("--u", lum < 0.45 ? "rgba(255,255,255,.28)" : "rgba(18,18,18,.22)");
+      }
+
+      function run(){
+        const rgb = sampleEdgeColor(img);
+        if (rgb) setVarsFromRGB(rgb[0], rgb[1], rgb[2]);
+        document.body.classList.add("is-themed");
+      }
+
+      if (img.complete && img.naturalWidth) run();
+      else img.addEventListener("load", run, { once:true });
+    })();
+  </script>
 </body>
 </html>

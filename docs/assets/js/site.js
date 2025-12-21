@@ -3,72 +3,46 @@
   const year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  // Mobile drawer
-  const toggle = document.querySelector("[data-nav-toggle]");
-  const drawer = document.querySelector("[data-drawer]");
-  const closeEls = document.querySelectorAll("[data-drawer-close]");
+  // Tabs (Home bands)
+  document.querySelectorAll("[data-tabs]").forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll("[data-tab]"));
+    const panels = Array.from(root.querySelectorAll("[data-panel]"));
 
-  function openDrawer() {
-    if (!drawer || !toggle) return;
-    drawer.classList.add("is-open");
-    drawer.setAttribute("aria-hidden", "false");
-    toggle.setAttribute("aria-expanded", "true");
-    document.documentElement.style.overflow = "hidden";
-  }
+    const setActive = (key) => {
+      tabs.forEach(t => t.classList.toggle("is-active", t.dataset.tab === key));
+      panels.forEach(p => p.classList.toggle("is-active", p.dataset.panel === key));
+    };
 
-  function closeDrawer() {
-    if (!drawer || !toggle) return;
-    drawer.classList.remove("is-open");
-    drawer.setAttribute("aria-hidden", "true");
-    toggle.setAttribute("aria-expanded", "false");
-    document.documentElement.style.overflow = "";
-  }
-
-  if (toggle && drawer) {
-    toggle.addEventListener("click", () => {
-      const isOpen = drawer.classList.contains("is-open");
-      if (isOpen) closeDrawer();
-      else openDrawer();
+    tabs.forEach(t => {
+      t.addEventListener("click", () => setActive(t.dataset.tab));
     });
 
-    closeEls.forEach(el => el.addEventListener("click", closeDrawer));
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeDrawer();
-    });
-  }
+    if (tabs[0]) setActive(tabs[0].dataset.tab);
+  });
 
-  // Home concept dots (index only)
-  const rail = document.getElementById("conceptRail");
-  const dots = Array.from(document.querySelectorAll(".concept-dots .dot"));
-  if (rail && dots.length) {
-    function setActiveDot(idx){
-      dots.forEach((d,i)=>d.classList.toggle("is-active", i===idx));
-    }
+  // Subtle parallax on hero orbs (poet visual)
+  const visual = document.querySelector(".hero-visual");
+  const orbs = visual ? visual.querySelectorAll(".poet-orb") : null;
 
-    dots.forEach(d => {
-      d.addEventListener("click", (e) => {
-        const idx = Number(d.dataset.slide);
-        const slide = rail.children[idx];
-        if (!slide) return;
-        e.preventDefault();
-        slide.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
-        setActiveDot(idx);
-        history.replaceState(null, "", d.getAttribute("href"));
+  if (visual && orbs && orbs.length) {
+    let raf = null;
+    const onMove = (e) => {
+      const r = visual.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width) - 0.5;   // -0.5 ~ 0.5
+      const y = ((e.clientY - r.top) / r.height) - 0.5;
+
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        orbs.forEach((orb, idx) => {
+          const m = (idx + 1) * 10;
+          orb.style.transform = `translate3d(${x * m}px, ${y * m}px, 0)`;
+        });
       });
-    });
+    };
 
-    rail.addEventListener("scroll", () => {
-      const rect = rail.getBoundingClientRect();
-      let bestIdx = 0;
-      let bestDist = Infinity;
-      Array.from(rail.children).forEach((el, idx) => {
-        const r = el.getBoundingClientRect();
-        const dist = Math.abs(r.left - rect.left);
-        if (dist < bestDist) { bestDist = dist; bestIdx = idx; }
-      });
-      setActiveDot(bestIdx);
-    }, { passive: true });
+    visual.addEventListener("mousemove", onMove);
+    visual.addEventListener("mouseleave", () => {
+      orbs.forEach(o => o.style.transform = "translate3d(0,0,0)");
+    });
   }
 })();
-
-

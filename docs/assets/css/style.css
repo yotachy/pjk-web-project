@@ -1,13 +1,11 @@
 /* =========================================================
-   Park Jongkwon — Home (Tuned)
-   - Smooth mid-width behavior (no ugly wraps)
-   - 2-col → 1-col breakpoint tuned to 1180px
-   - Fluid type via clamp to prevent sudden line-break jumps
-   - CTA pinned to photo bottom line on 2-col desktop only
+   Park Jongkwon — One Page (Seamless Sections)
 ========================================================= */
 
 :root{
   --bg: #d8cfc4;
+  --bg2: #c9c0b5;
+
   --ink: rgba(18,18,18,.92);
   --muted: rgba(18,18,18,.62);
   --hairline: rgba(18,18,18,.10);
@@ -22,12 +20,16 @@
 
   --heroMax: 1440px;
 
-  /* photo panel height (2-col baseline) */
+  /* 세로가 긴 화면에서 과한 여백 방지 */
+  --heroMin: 680px;
+  --heroMaxH: 920px;
+
   --panelH: min(64vh, 680px);
 }
 
 *{ box-sizing: border-box; }
 html,body{ margin:0; padding:0; }
+html{ scroll-behavior: smooth; }
 
 body{
   font-family: var(--font);
@@ -70,6 +72,7 @@ body::after{
   max-width: var(--heroMax);
   margin: 0 auto;
   padding: 0 var(--gutter);
+  gap: 18px;
 }
 
 .tv-brand{
@@ -77,6 +80,7 @@ body::after{
   text-decoration: none;
   font-weight: 900;
   letter-spacing: -0.02em;
+  min-width: 0;
 }
 .tv-brand__title{ font-size: 36px; }
 
@@ -85,13 +89,19 @@ body::after{
   align-items: center;
   gap: clamp(22px, 2.8vw, 44px);
 }
+
 .tv-tab{
   color: var(--muted);
   text-decoration: none;
   font-weight: 800;
   font-size: 27px;
   line-height: 1;
+
+  white-space: nowrap;
+  word-break: keep-all;
+  flex: 0 0 auto;
 }
+
 .tv-tab:hover{
   color: var(--ink);
   text-decoration: underline;
@@ -108,12 +118,18 @@ body::after{
 }
 
 /* ---------------------------------------------------------
-   Hero Layout (2-col baseline)
+   One Page
+--------------------------------------------------------- */
+.tv-page{ display:block; }
+.tv-section{ scroll-margin-top: calc(var(--topH) + 14px); }
+
+/* ---------------------------------------------------------
+   Hero (Aligned)
 --------------------------------------------------------- */
 .tv-hero{
-  min-height: calc(100vh - var(--topH));
+  min-height: clamp(var(--heroMin), calc(100vh - var(--topH)), var(--heroMaxH));
   display: flex;
-  align-items: stretch;
+  align-items: flex-start;
 }
 
 .tv-hero__inner{
@@ -123,21 +139,16 @@ body::after{
   padding: clamp(22px, 3.2vw, 44px) var(--gutter) clamp(28px, 4vw, 60px);
 
   display: grid;
-
-  /* keep minimum readable widths in 2-col */
   grid-template-columns: minmax(420px, 1.05fr) minmax(520px, 1.25fr);
-
   gap: clamp(18px, 3vw, 44px);
-  align-items: stretch;
+
+  align-items: start;
+  align-content: start;
 }
 
-/* ---------------------------------------------------------
-   Left
---------------------------------------------------------- */
+/* Left */
 .tv-left{
   padding-top: clamp(6px, 1.2vw, 18px);
-
-  /* needed for CTA pinning in 2-col */
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -151,7 +162,6 @@ body::after{
   opacity: .9;
 }
 
-/* No mid-word breaks in Korean */
 .tv-line{
   margin: 0 0 20px;
   font-weight: 800;
@@ -162,7 +172,6 @@ body::after{
   line-break: strict;
 }
 
-/* ✅ Fluid type: smooth downscale on mid widths */
 .tv-line--big{
   font-size: clamp(44px, 4.6vw, 54px);
   line-height: 1.35;
@@ -177,7 +186,6 @@ body::after{
   font-weight: 700;
 }
 
-/* CTA (default flow; pinned only in 2-col desktop rule below) */
 .tv-cta{
   display: flex;
   align-items: center;
@@ -219,13 +227,11 @@ body::after{
   text-decoration-thickness: 2px;
 }
 
-/* ---------------------------------------------------------
-   Right (Photo)
---------------------------------------------------------- */
+/* Right (Photo) */
 .tv-right{
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .tv-panel{
@@ -238,7 +244,6 @@ body::after{
   overflow: hidden;
 }
 
-/* shimmer */
 .tv-panel::after{
   content:"";
   position:absolute;
@@ -298,9 +303,7 @@ body::after{
 }
 
 @media (hover:hover){
-  .tv-panel__img{
-    transition: transform .45s ease, filter .45s ease;
-  }
+  .tv-panel__img{ transition: transform .45s ease, filter .45s ease; }
   .tv-panel:hover .tv-panel__img{
     transform: scale(1.07) translate3d(0.2%, -0.2%, 0);
     filter: contrast(1.02) saturate(1.03);
@@ -318,11 +321,115 @@ body::after{
 }
 
 /* ---------------------------------------------------------
+   ✅ Seamless Sections (About / Works)
+   - 카드/테두리/그림자 제거
+   - 메인 톤 그대로: 타이포 + 얇은 디바이더 + 넓은 여백
+--------------------------------------------------------- */
+.tv-section--blank{
+  /* 한 페이지 정도 “비어있는” 느낌 유지 */
+  min-height: 100vh;
+  padding: clamp(40px, 6.2vw, 96px) 0 clamp(44px, 7vw, 120px);
+}
+
+/* 기존 카드 컨테이너를 "섹션 내폭" 역할로만 사용 (배경/테두리/그림자 없음) */
+.tv-shell{
+  width: 100%;
+  max-width: var(--heroMax);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* tv-stage를 완전히 “투명한 레이아웃 래퍼”로 전환 */
+.tv-stage{
+  position: relative;
+  padding: 0;                 /* 카드 패딩 제거 */
+  background: transparent;    /* 배경 제거 */
+  border: 0;                  /* 테두리 제거 */
+  border-radius: 0;           /* 라운드 제거 */
+  box-shadow: none;           /* 그림자 제거 */
+  overflow: visible;
+}
+.tv-stage::before{ content:none; }
+
+/* 섹션 타이틀/리드 스타일은 유지하되, 메인 톤에 맞게 정리 */
+.tv-kicker{
+  font-weight: 900;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: var(--muted);
+  opacity: .95;
+}
+
+.tv-h2{
+  margin: 12px 0 14px;
+  font-size: clamp(34px, 3.2vw, 44px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.tv-lead{
+  margin: 0;
+  font-size: clamp(18px, 1.55vw, 22px);
+  line-height: 1.7;
+  color: var(--muted);
+  font-weight: 700;
+  max-width: 76ch;
+}
+
+/* 섹션 구분은 “박스”가 아니라 “공기 + 얇은 룰”로 */
+.tv-section--blank .tv-divider{
+  margin: 22px 0 18px;
+  width: clamp(160px, 24vw, 260px);
+}
+
+/* 비어있는 공간은 “박스”가 아니라 아주 은은한 공간감만 */
+.tv-blank{
+  height: clamp(360px, 56vh, 640px);
+  margin-top: clamp(18px, 3.2vw, 28px);
+
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+/* 대신 매우 얕은 그라데이션 “바닥”만 깔아 페이지 흐름을 유지 */
+.tv-blank::before{
+  content:"";
+  display:block;
+  height: 100%;
+  background:
+    linear-gradient(180deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,.08) 55%,
+      rgba(0,0,0,.03) 100%
+    );
+  opacity: .65;
+}
+
+/* 힌트 문구도 더 미니멀하게 */
+.tv-hint{
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 650;
+  opacity: .9;
+}
+
+/* 섹션 사이 “자연스러운 이어짐”을 위해 배경 톤 미세 변주 */
+#about{
+  background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,.03) 100%);
+}
+#works{
+  background: linear-gradient(180deg, rgba(255,255,255,.02) 0%, transparent 100%);
+}
+
+/* ---------------------------------------------------------
    Footer
 --------------------------------------------------------- */
-.tv-foot{
-  padding: 18px 0 26px;
-}
+.tv-foot{ padding: 18px 0 26px; }
+
 .tv-foot__inner{
   max-width: var(--heroMax);
   margin: 0 auto;
@@ -336,56 +443,28 @@ body::after{
 }
 .tv-foot__muted{ opacity: .9; }
 
-/* =========================================================
-   ✅ 2-col Desktop (horizontal): pin CTA to photo bottom line
-========================================================= */
-@media (min-width: 981px) and (min-aspect-ratio: 1/1){
-  .tv-hero__inner{ align-items: start; }
-  .tv-right{ align-items: flex-start; }
-  .tv-left{
-    padding-top: 0;
-    height: var(--panelH);
-  }
-  .tv-cta{
-    margin-top: auto;
-    padding-top: 18px;
-    padding-bottom: 18px;
-  }
-}
-
-/* =========================================================
-   ✅ Tuned breakpoint: collapse to 1-col earlier (1180px)
-========================================================= */
+/* ---------------------------------------------------------
+   Responsive
+--------------------------------------------------------- */
 @media (max-width: 1180px){
   .tv-hero__inner{
     grid-template-columns: 1fr;
     gap: 22px;
   }
 
-  /* 1-col: natural flow */
-  .tv-left{ height: auto; }
-  .tv-cta{
-    margin-top: 28px;
-    padding: 0;
-  }
-
-  .tv-panel{
-    height: min(52vh, 540px);
-  }
+  .tv-right{ align-items: flex-start; justify-content: flex-start; }
+  .tv-panel{ height: min(52vh, 540px); }
 }
 
-/* =========================================================
-   Mobile
-========================================================= */
 @media (max-width: 680px){
   :root{
     --topH: 76px;
     --base: 17px;
+    --heroMin: 640px;
+    --heroMaxH: 860px;
   }
 
-  .tv-top__inner{
-    padding: 0 clamp(14px, 4.5vw, 18px);
-  }
+  .tv-top__inner{ padding: 0 clamp(14px, 4.5vw, 18px); }
 
   .tv-brand__title{ font-size: 26px; }
   .tv-nav{ gap: 14px; }
@@ -396,32 +475,56 @@ body::after{
   }
 
   .tv-line--big{
-    font-size: 42px;   /* slightly bigger on narrow */
+    font-size: 42px;
     line-height: 1.45;
     margin-top: 14px;
     margin-bottom: 26px;
   }
 
-  .tv-btn{
-    height: 50px;
-    padding: 0 18px;
-    max-width: 100%;
-  }
+  .tv-btn{ height: 50px; padding: 0 18px; max-width: 100%; }
 
-  .tv-panel{
-    height: min(46vh, 420px);
-  }
-
+  .tv-panel{ height: min(46vh, 420px); }
   .tv-panel::after{ opacity: .45; }
 
   .tv-divider{
     width: clamp(96px, 34vw, 160px);
     margin: 12px 0 14px;
   }
+
+  .tv-section--blank{
+    padding: 34px 0 74px;
+  }
 }
+
+@media (max-width: 520px){
+  .tv-top{ height: auto; }
+  .tv-top__inner{
+    height: auto;
+    padding: 12px clamp(14px, 4.5vw, 18px) 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .tv-brand__title{ font-size: 24px; line-height: 1.15; }
+
+  .tv-nav{
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+    gap: 16px;
+  }
+
+  .tv-nav::-webkit-scrollbar{ height: 6px; }
+  .tv-nav::-webkit-scrollbar-thumb{ background: transparent; }
+  .tv-nav{ scrollbar-width: none; }
+}
+
 /* ---------------------------------------------------------
-   Profile image edge fade
-   - 좌/우 경계를 배경색으로 자연스럽게 블렌딩
+   Profile image edge fade (theme-safe)
 --------------------------------------------------------- */
 .tv-panel::before{
   content:"";
@@ -430,13 +533,12 @@ body::after{
   pointer-events: none;
   z-index: 2;
 
-  /* 좌/우만 부드럽게 페이드 */
   background:
     linear-gradient(
       90deg,
       var(--bg) 0%,
-      rgba(216,207,196,0.0) 12%,
-      rgba(216,207,196,0.0) 88%,
+      transparent 12%,
+      transparent 88%,
       var(--bg) 100%
     );
 }

@@ -6,72 +6,105 @@
   <title>시인 박종권의 홈페이지</title>
   <meta name="description" content="박종권 시인의 작품과 기록을 이곳에.." />
 
-  <!-- ✅ 경로 고정 -->
-  <link rel="stylesheet" href="./assets/css/style.css" />
+<link rel="stylesheet" href="./assets/css/style.css?v=20251223-01" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body class="theme-auto">
-  <!-- Top Nav (텍스트만) -->
   <header class="tv-top" role="banner">
     <div class="tv-top__inner">
-      <a class="tv-brand" href="./index.html" aria-label="홈으로">
-        <span class="tv-brand__title">안녕하세요. 시인 "박종권"입니다.</span>
+      <a class="tv-brand" href="#home" aria-label="홈으로">
+        <span class="tv-brand__title">환영합니다.</span>
       </a>
 
       <nav class="tv-nav" aria-label="주요 메뉴">
-        <a class="tv-tab is-active" href="./index.html" aria-current="page">메인</a>
-        <a class="tv-tab" href="./profile.html">소개</a>
-        <a class="tv-tab" href="./works/index.html">작품·활동</a>
+        <a class="tv-tab is-active" href="#home" data-nav="home" aria-current="page">메인</a>
+        <a class="tv-tab" href="#about" data-nav="about">소개</a>
+        <a class="tv-tab" href="#works" data-nav="works">작품·활동</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <main class="tv-hero" role="main">
-    <div class="tv-hero__inner">
-      <!-- LEFT -->
-      <section class="tv-left" aria-label="메인 소개">
-        <p class="tv-line tv-line--big">말하지 못한 마음들이<br/>가장 낮은 목소리로 남아 있는 곳</p>
-        <div class="tv-divider" role="presentation" aria-hidden="true"></div>
-        <p class="tv-line tv-line--small">"지나간 마음과 미처 전하지 못한 말들,<br/>그 사이에 머문 풍경을 천천히 기록합니다.<br/>이곳에서 잠시 멈춰도 괜찮습니다."</p>
-        <div class="tv-cta">
-          <a class="tv-btn" href="./works/index.html">주요 작품</a>
-          <a class="tv-link" href="./profile.html">시인 "박종권"을 소개합니다</a>
+  <main class="tv-page" role="main">
+    <section id="home" class="tv-section tv-section--hero" aria-label="메인">
+      <div class="tv-hero">
+        <div class="tv-hero__inner">
+          <div class="tv-left" aria-label="메인 소개">
+            <p class="tv-line tv-line--big">말하지 못한 마음들이<br/>가장 낮은 목소리로 남아 있는 곳</p>
+            <div class="tv-divider" role="presentation" aria-hidden="true"></div>
+            <p class="tv-line tv-line--small">"지나간 마음과 미처 전하지 못한 말들,<br/>그 사이에 머문 풍경을 천천히 기록합니다.<br/>이곳에서 잠시 멈춰도 괜찮습니다."</p>
+
+            <div class="tv-cta">
+              <a class="tv-btn" href="#works">주요 작품</a>
+              <a class="tv-link" href="#about">시인 "박종권"을 소개합니다</a>
+            </div>
+          </div>
+
+          <div class="tv-right" aria-label="프로필 비주얼">
+            <figure class="tv-panel">
+              <img
+                id="profileImg"
+                class="tv-panel__img"
+                src="./assets/img/profile.jpg"
+                alt="박종권 프로필 사진"
+                loading="eager"
+                decoding="async"
+                crossorigin="anonymous"
+              />
+              <figcaption class="tv-panel__cap">PARK JONG KWON</figcaption>
+            </figure>
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- RIGHT (프로필 사진) -->
-      <section class="tv-right" aria-label="프로필 비주얼">
-        <figure class="tv-panel">
-          <img
-            id="profileImg"
-            class="tv-panel__img"
-            src="./assets/img/profile.jpg"
-            alt="박종권 프로필 사진"
-            loading="eager"
-            decoding="async"
-            crossorigin="anonymous"
-          />
-          <figcaption class="tv-panel__cap">PARK JONG KWON</figcaption>
-        </figure>
-      </section>
-    </div>
+    <section id="about" class="tv-section tv-section--blank" aria-label="소개">
+      <div class="tv-shell">
+        <div class="tv-stage">
+          <div class="tv-kicker">INTRODUCTION</div>
+          <h2 class="tv-h2">소개</h2>
+          <p class="tv-lead">
+            이 영역은 한 페이지 정도 여백을 두고, 향후 소개 글·연보·연락처 등을
+            추가할 수 있도록 구성했습니다.
+          </p>
+          <div class="tv-blank" aria-hidden="true"></div>
+          <div class="tv-hint" aria-hidden="true">
+            스크롤을 내리면 상단 메뉴가 자동으로 따라 선택됩니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="works" class="tv-section tv-section--blank" aria-label="작품·활동">
+      <div class="tv-shell">
+        <div class="tv-stage">
+          <div class="tv-kicker">WORKS & ACTIVITY</div>
+          <h2 class="tv-h2">작품·활동</h2>
+          <p class="tv-lead">
+            이 영역도 한 페이지 정도 비워두었습니다.
+            대표 시·시집·낭독 기록·활동 로그 등을 이후에 추가하시면 됩니다.
+          </p>
+          <div class="tv-blank" aria-hidden="true"></div>
+          <div class="tv-hint" aria-hidden="true">
+            필요 시, 작품 목록을 카드/타임라인 형태로 확장할 수 있습니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="tv-foot" role="contentinfo">
+      <div class="tv-foot__inner">
+        <span>© <span id="year"></span> Park Jongkwon</span>
+        <span class="tv-foot__muted">Poetry • Archive</span>
+      </div>
+    </footer>
   </main>
-
-  <footer class="tv-foot" role="contentinfo">
-    <div class="tv-foot__inner">
-      <span>© <span id="year"></span> Park Jongkwon</span>
-      <span class="tv-foot__muted">Poetry • Archive</span>
-    </div>
-  </footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ---- Theme: profile.jpg 배경 톤을 사이트 전체 배경으로 자동 적용 ----
     (function applyThemeFromProfile(){
       const img = document.getElementById("profileImg");
       if (!img) return;
@@ -169,6 +202,71 @@
 
       if (img.complete && img.naturalWidth) run();
       else img.addEventListener("load", run, { once:true });
+    })();
+
+    (function scrollSpy(){
+      const tabs = Array.from(document.querySelectorAll(".tv-tab[data-nav]"));
+      const sections = ["home","about","works"]
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+
+      function setActive(id){
+        tabs.forEach(a=>{
+          const on = a.getAttribute("data-nav") === id;
+          a.classList.toggle("is-active", on);
+          if (on) a.setAttribute("aria-current","page");
+          else a.removeAttribute("aria-current");
+        });
+      }
+
+      function headerOffset(){
+        const h = document.querySelector(".tv-top");
+        return Math.max(60, Math.round(h ? h.getBoundingClientRect().height : 96));
+      }
+
+      let io = null;
+      function bindObserver(){
+        const top = headerOffset();
+        if (io) io.disconnect();
+
+        io = new IntersectionObserver((entries)=>{
+          const visible = entries
+            .filter(e => e.isIntersecting)
+            .sort((a,b)=> (a.boundingClientRect.top - b.boundingClientRect.top));
+
+          if (visible.length){
+            setActive(visible[0].target.id);
+          }
+        },{
+          root: null,
+          threshold: [0.18, 0.25, 0.35],
+          rootMargin: `-${top + 8}px 0px -55% 0px`
+        });
+
+        sections.forEach(sec => io.observe(sec));
+      }
+
+      document.addEventListener("click", (e)=>{
+        const a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+
+        const hash = a.getAttribute("href");
+        const target = document.querySelector(hash);
+        if (!target) return;
+
+        e.preventDefault();
+        const top = headerOffset();
+        const y = target.getBoundingClientRect().top + window.scrollY - top - 8;
+
+        window.scrollTo({ top: y, behavior: "smooth" });
+        if (target.id) setActive(target.id);
+      }, { passive:false });
+
+      bindObserver();
+
+      window.addEventListener("resize", ()=>{
+        bindObserver();
+      }, { passive:true });
     })();
   </script>
 </body>

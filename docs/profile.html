@@ -6,14 +6,14 @@
   <title>시인 박종권의 홈페이지</title>
   <meta name="description" content="박종권 시인의 작품과 기록을 이곳에.." />
 
-
-  <!-- ✅ 절대경로로 CSS 로드 (환경별 경로 문제 최소화) -->
-  <link rel="stylesheet" href="../assets/css/style.css" />
+  <!-- index.html과 동일한 상대경로 사용(환경별 경로 문제 최소화) -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
+    /* 페이지가 짧아도 footer를 하단에 붙이기 위한 최소 설정 */
     body{ min-height:100vh; display:flex; flex-direction:column; }
     main.tv-hero{ flex:1; min-height:auto; }
   </style>
@@ -22,14 +22,14 @@
 <body class="theme-auto">
   <header class="tv-top" role="banner">
     <div class="tv-top__inner">
-      <a class="tv-brand" href="/index.html" aria-label="홈으로">
-        <span class="tv-brand__title">시인 "박종권"을 소개합니다.</span>
+      <a class="tv-brand" href="./index.html" aria-label="홈으로">
+        <span class="tv-brand__title">시인 "박종권"</span>
       </a>
 
       <nav class="tv-nav" aria-label="주요 메뉴">
-        <a class="tv-tab" href="/index.html">메인</a>
-        <a class="tv-tab" href="/profile.html">소개</a>
-        <a class="tv-tab is-active" href="/works/index.html" aria-current="page">작품·활동</a>
+        <a class="tv-tab" href="./index.html">메인</a>
+        <a class="tv-tab is-active" href="./profile.html" aria-current="page">소개</a>
+        <a class="tv-tab" href="./works/index.html">작품·활동</a>
       </nav>
     </div>
   </header>
